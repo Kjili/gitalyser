@@ -1,6 +1,3 @@
-import subprocess
-import time
-import dateutil.parser
 import argparse
 
 keywords = ["S.", "Seite"]
@@ -21,6 +18,10 @@ parser.add_argument("-v", dest="verbose", action="store_true", help="list and vi
 # TODO average plot
 # TODO add empty list checks
 args = parser.parse_args()
+
+import subprocess
+import time
+import dateutil.parser
 
 filename=args.filename
 
