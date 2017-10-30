@@ -15,9 +15,9 @@ For example using the default keywords ('S.', 'Seite') and calling the
 program from a git repository with a git log containing three entries 
 with messages including the following
 
-	- S. 15
-	- S. 7
-	- S. 3
+	S. 15
+	S. 7
+	S. 3
 
 will show you some analysis on a progress of 12 pages in total 
 respecting the date of the commit.
@@ -31,10 +31,10 @@ recommended to explore additional features.
 
 # Requirements:
 
-	- python >= 3.6 (not tested for lower versions)
-	- python-dateutil
-	- python-matplotlib (optional)
-	- git (and commits with the specified keyword number patterns)
+- python >= 3.6 (not tested for lower versions)
+- python-dateutil
+- python-matplotlib (optional)
+- git (and commits with the specified keyword number patterns)
 
 Limiting the amount of characters on a page to a fixed number (e.g. 
 1800), setting the font size to a fixed value and defining a fixed font 
