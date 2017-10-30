@@ -1,3 +1,9 @@
+#
+# Original work Copyright (c) 2017 Annemarie Mattmann
+#
+# Licensed under the MIT license. See the LICENSE file for details.
+#
+
 import argparse
 
 keywords = ["S.", "Seite"]
