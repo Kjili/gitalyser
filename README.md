@@ -3,6 +3,7 @@
 This project implements a text writing progress tracker based on 
 existing git commit messages. Results include textual and visualised 
 information about daily average, remarkable changes and progress.
+It will also provide you with some motivational comments to keep going.
 
 It analyses all git log messages from a given file that contain a 
 keyword followed by a number with a space in between. The default use 
@@ -11,20 +12,36 @@ with the number representing the current page at the time of the
 commit.
 Those keywords must of course be manually introduced to the commits.
 
-For example using the default keywords ('S.', 'Seite') and calling the 
-program from a git repository with a git log containing three entries 
-with messages including the following
-
-	S. 15
-	S. 7
-	S. 3
-
-will show you some analysis on a progress of 12 pages in total 
-respecting the date of the commit.
-It will also provide you with some motivational comments to keep going.
-
 So far keywords can only be changed directly in (line 9 of) the source 
 code.
+
+An example when using the default keywords ('S.', 'Seite') and 
+calling the program from a git repository with a git log containing 
+167 commits that include the keyword number pattern using:
+
+```python ../gitalyse/gitalyse.py filename -r -t 300 -n 5```
+
+results in the following output:
+
+	Detected 167 commits, failed to detect 46 commits.
+	Between: 
+	9dc2bc4	2017-10-16T18:20:19+02:00	filename: S. 303
+	77b76ee	2016-10-01T20:05:05+02:00	filename S. 6
+	380 days total passed while writing 297 pages
+	That is an average of 0.781578947368421 pages per day
+	For the last 5 commits:
+	9dc2bc4	2017-10-16T18:20:19+02:00	filename: S. 303
+	b03af46	2017-10-16T01:13:52+02:00	filename: S. 295
+	5a021af	2017-10-15T21:39:39+02:00	filename: S. 294
+	ce5ffae	2017-10-15T17:46:49+02:00	filename: S. 291
+	9fba437	2017-10-14T17:14:39+02:00	filename: S. 291
+	3 days total passed while writing 12 pages
+	That is an average of 4.0 pages per day
+	 - great, keep going! :D
+
+and the following visualisation:
+
+![alt text](https://github.com/Kjili/gitalyser/raw/master/example-fig.png "Example Figure")
 
 Using the help by calling `python gitalyser.py -h` is highly 
 recommended to explore additional features.
