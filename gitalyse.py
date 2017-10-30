@@ -118,12 +118,18 @@ for i in range(len(loglistDetected)-1):
 
 # print helper functions #
 
+def prettyprintEntry(entry, color=True):
+	if color:
+		print('\x1b[0;35;40m' + entry[0] + '\x1b[0m' + "\t" + entry[2] + "\t" + entry[1])
+	else:
+		print(entry[0] + "\t" + entry[2] + "\t" + entry[1])
+
 def printChange(entry1, entry2):
 	days = timediff(entry1[2], entry2[2]) + 1 	# +1 to avoid division by 0
 	pages = entry1[3] - entry2[3]
 	print("Between: ")
-	print(entry1)
-	print(entry2)
+	prettyprintEntry(entry1)
+	prettyprintEntry(entry2)
 	print(str(days) + " days total passed while writing " + str(pages) + " pages")
 	print("That is an average of " + str(pages/days) + " pages per day")
 
@@ -137,7 +143,7 @@ def printCurrentChange(loglist, numCommits = 3):
 		
 		print("For the last " + str(numCommits) + " commits: ")
 		for i in range(0, numCommits):
-			print(loglist[i])
+			prettyprintEntry(loglist[i])
 		print(str(days) + " days total passed while writing " + str(pages) + " pages")
 		print("That is an average of " + str(average) + " pages per day")
 		print(" - great, keep going! :D" if average >= 2 else " - just a little bit more! :)" if average >= 1.5 else " - don't worry, just do it!")
@@ -153,17 +159,19 @@ recentIndex = -1
 splitlist = loglistDetected[index1:index2+1] # in the default case this is the whole list
 
 # print analysis
+print("Detected " + str(len(loglistDetected)) + " commits, failed to detect " + str(len(loglistFailed)) + " commits.")
+
 for i in range(len(daydifflist)-1):
 	# print remarkable changes
 	if args.verbose:
 		if (daydifflist[i] > 14):
 			print("A long break (more than two weeks) was between: ")
-			print(splitlist[i])
-			print(splitlist[i+1])
+			prettyprintEntry(splitlist[i])
+			prettyprintEntry(splitlist[i+1])
 		if (pagedifflist[i] > threshold or pagedifflist[i] < -threshold):
 			print("A remarkable change in page difference happened between: ")
-			print(splitlist[i])
-			print(splitlist[i+1])
+			prettyprintEntry(splitlist[i])
+			prettyprintEntry(splitlist[i+1])
 	# get recent index
 	if args.recent and recentIndex == -1 and i > numCommits and pagedifflist[i] < -threshold:
 		#print("Warning: The last commit already marks a remarkable backward change, recent commits will be shown until the next remarkable change in history.")
