@@ -1,7 +1,7 @@
 import argparse
 
 keywords = ["S.", "Seite"]
-parser = argparse.ArgumentParser(description="Progress tracker based on git commit messages. It analyses all git log messages from a given file that contain a keyword followed by a number. The default use case is to track writing progress in pages with the number representing the current page at the time of the commit (example: " + str(keywords[0]) + "19). Currently used keywords: " + str(keywords), formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser = argparse.ArgumentParser(description="Progress tracker based on git commit messages. It analyses all git log messages from a given file that contain a keyword followed by a number (with a space in between). The default use case is to track writing progress in pages with the number representing the current page at the time of the commit (example: " + str(keywords[0]) + " 19). Currently used keywords: " + str(keywords), formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("filename", type=str, help="name of the file to be analysed")
 parser.add_argument("-l", dest="log", action="store_true", help="list all commits and exit, this is similar to \"git log --oneline\" of the given file")
 parser.add_argument("-m", dest="missing", action="store_true", help="list missing commit messages and exit, messages can be missing (i.e. non-detected) because of missing or wrong keywords or wrong structure in commit messages")
